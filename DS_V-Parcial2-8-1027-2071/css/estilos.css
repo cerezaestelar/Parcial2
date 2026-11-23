@@ -1,0 +1,124 @@
+/* ===== FUENTE PERSONALIZADA =====
+   Coloca el archivo de la fuente en la carpeta /fonts con el nombre Gilker.ttf */
+@font-face {
+  font-family: "Gliker";
+  src: url("../fonts/Gliker.ttf") format("truetype"),
+       url("../fonts/Gliker.otf") format("opentype");
+  font-display: swap;
+}
+
+/* VARIABLES DE COLOR   */
+:root {
+  --marron: #2b1f1a;       
+  --guinda: #8b1a22;       
+  --guinda-osc: #6e131a;   
+  --tarjeta: #e4e9ed;      
+  --blanco: #ffffff;
+}
+
+/*  ESTILOS GENERALES  */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Gliker", "Gluten", "Comic Sans MS", cursive, sans-serif;
+  min-height: 100vh;
+  color: var(--marron);
+  background: var(--guinda) url("../img/fondo.png") center / cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ENCABEZADO  */
+.encabezado {
+  width: 100%;
+  padding: 28px 16px 12px;
+  background: rgba(43, 31, 26, 0.85); 
+  text-align: center;
+}
+.encabezado h1 {
+  color: var(--blanco);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: normal;
+}
+
+/*  MENÚ SUPERIOR  */
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 16px 18px;
+  background: rgba(43, 31, 26, 0.85);
+}
+.tab {
+  font-family: inherit;
+  font-size: 1.1rem;
+  padding: 8px 22px;
+  border: 2px solid var(--blanco);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--blanco);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.tab:hover { background: rgba(255, 255, 255, 0.2); }
+.tab.activa { background: var(--blanco); color: var(--guinda); }
+
+/* TARJETA CENTRAL */
+main { width: 100%; display: flex; justify-content: center; padding: 40px 16px; }
+
+.tarjeta {
+  display: none;                       /* oculta por defecto */
+  width: min(100%, 680px);
+  background: var(--tarjeta);
+  border: 3px dashed var(--marron);    /* borde punteado */
+  border-radius: 50px;
+  padding: 40px 30px;
+  text-align: center;
+}
+.tarjeta.visible {
+  display: flex;                       /* solo se muestra la activa */
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.tarjeta h2 { font-size: 1.7rem; font-weight: normal; margin-bottom: 8px; }
+
+/* CAMPOS DE ENTRADA*/
+input {
+  width: min(100%, 420px);
+  padding: 16px;
+  border: none;
+  background: var(--blanco);
+  font-family: inherit;
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--marron);
+}
+input:focus { outline: 3px solid var(--guinda); }
+
+/* BOTÓN CALCULAR  */
+.btn-calcular {
+  margin-top: 12px;
+  padding: 18px 34px;
+  border: none;
+  border-radius: 999px;
+  background: var(--guinda);
+  color: var(--blanco);
+  font-family: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-calcular:hover { background: var(--guinda-osc); }
+.btn-calcular:active { transform: scale(0.96); }
+
+/* RESULTADO */
+.resultado {
+  min-height: 1.6em;
+  font-size: 1.4rem;
+  color: var(--guinda);
+}
+.resultado.error { color: #b00020; font-size: 1.1rem; }
